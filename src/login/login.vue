@@ -5,7 +5,7 @@
         <el-form-item label="用户名" prop="user">
           <el-input v-model="ruleForm.user" placeholder="请输入用户名" autocomplete="on"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="pass">
+        <el-form-item label="密码"  prop="pass">
           <el-input v-model="ruleForm.pass" placeholder="请输入密码" autocomplete="on"></el-input>
         </el-form-item>
         <el-form-item>
