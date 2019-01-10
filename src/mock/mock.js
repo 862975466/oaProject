@@ -9,12 +9,12 @@ function loginByUsername(data){
   postData.forEach((el)=>{
     loginObjK[el.split('=')[0]] = el.split('=')[1];
   });
-  const key = "dfghjk"+Date.parse(new Date()) + Math.ceil(Math.random() * 99999);
+  const key = loginObjK.user + Date.parse(new Date()) + Math.ceil(Math.random() * 99999);
   loginObjK.token = key;
  // alert(postData.split('&'))
   return loginObjK;
 }
-Mock.mock(/address_edit_before/,'post', loginByUsername);
+Mock.mock(/login/,'post', loginByUsername);
 Mock.mock(/address_edit_before9/,{
   'list':[
     {
