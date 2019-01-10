@@ -1,10 +1,10 @@
 <template>
   <div class="home-main1">
-    <el-container>
+    <el-container style="width:100%;height: 100%; position: absolute;">
       <el-header>Header</el-header>
       <el-container>
         <el-aside width="200px">
-
+          Left
         </el-aside>
         <el-main>Main</el-main>
       </el-container>
@@ -17,6 +17,11 @@
   import { apiAddress } from '@/request/api';// 导入我们的api接口
   export default {
     name: "home-main",
+    data(){
+      return{
+
+      }
+    },
     methods:{
       loginFun(){
         // apiAddress({

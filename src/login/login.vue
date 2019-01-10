@@ -3,10 +3,10 @@
     <div class="login-mian">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm">
         <el-form-item label="用户名" prop="user">
-          <el-input v-model="ruleForm.user"></el-input>
+          <el-input v-model="ruleForm.user" placeholder="请输入用户名" autocomplete="on"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass">
-          <el-input v-model="ruleForm.pass"></el-input>
+          <el-input v-model="ruleForm.pass" placeholder="请输入密码" autocomplete="on"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')" style="float: right">登录</el-button>
@@ -42,7 +42,8 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             userLogin(this.ruleForm).then(res => {
-              alert("返回"+JSON.stringify(res));
+              //alert("返回"+JSON.stringify(res));
+              this.$router.push({ name: 'homeMain', params: {name: res}});
             })
           } else {
             console.log('error submit!!');
