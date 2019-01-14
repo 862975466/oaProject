@@ -2,20 +2,16 @@ import Mock from 'mockjs'
 function getRImg(size) {
   return Mock.Random.image(size,Mock.mock('@hex'));
 }
-function loginByUsername(data){
+function loginByUsername(){
   var loginObjK = {};
-  var postData = data.body;
-  postData = postData.split('&');
-  postData.forEach((el)=>{
-    loginObjK[el.split('=')[0]] = el.split('=')[1];
-  });
-  const key = loginObjK.user + Date.parse(new Date()) + Math.ceil(Math.random() * 99999);
+  let key = Mock.mock('@guid');
+  loginObjK.accesstoken = key;
   loginObjK.code = 200;
-  loginObjK.token = key;
- // alert(postData.split('&'))
+  loginObjK.userId = Date.parse(new Date());
+  loginObjK.userName = Mock.mock('@cname');
   return loginObjK;
 }
-Mock.mock(/login/,'post', loginByUsername);
+Mock.mock(/login/, loginByUsername);
 Mock.mock(/address_edit_before9/,{
   'list':[
     {

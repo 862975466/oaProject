@@ -21,6 +21,7 @@
 </template>
 
 <script>
+  import Axios from 'axios'
   import { userLogin } from '@/request/api'; // 导入我们的api接口
   export default {
     name: "login",
@@ -43,20 +44,17 @@
     },
     methods:{
       submitForm(formName){
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.ruleForm.accesstoken = 856825;
-            userLogin(this.ruleForm).then(res => {
-              alert("返回"+JSON.stringify(res));
-              if(res.code == 200){
-                this.$router.push({ name: 'homeMain', params: {name: res}});
-              }else {
-                alert(res.msg);
-              }
-            })
-          } else {
-            console.log('error submit!!');
-            return false;
+        var param = {
+          username:this.ruleForm.username,
+          password:this.ruleForm.password
+        };
+        param.accesstoken = "AdminTest"+Date.parse(new Date());
+        console.log("param=="+JSON.stringify(param));
+        Axios.get('api/login',param).then((response)=> {
+          console.log("response=="+JSON.stringify(response));
+          if(response.data.code == 200){
+            this.$store.state.accesstoken = response.data.accesstoken;
+            this.$router.push({name: 'homeMain'});
           }
         });
       }
