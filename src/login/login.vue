@@ -2,11 +2,11 @@
   <div class="login">
     <div class="login-mian">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm">
-        <el-form-item label="用户名" prop="user">
-          <el-input v-model="ruleForm.user" placeholder="请输入用户名" autocomplete="on"></el-input>
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="ruleForm.username" placeholder="请输入用户名" autocomplete="on"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="pass">
-          <el-input v-model="ruleForm.pass" placeholder="请输入密码" autocomplete="on"></el-input>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="ruleForm.password" placeholder="请输入密码" autocomplete="on" type="password" @keyup.enter.native="submitForm('ruleForm')"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')" style="float: right">登录</el-button>
@@ -23,14 +23,14 @@
     data(){
       return{
         ruleForm:{
-          user:'',
-          pass:'',
+          username:'',
+          password:'',
         },
         rules:{
-          user: [
+          username: [
             {required: true, message: '请输入活动名称', trigger: 'blur'},
           ],
-          pass:[
+          password:[
             {required: true, message: '请输入活动名称', trigger: 'blur'},
           ]
         },
@@ -41,9 +41,14 @@
       submitForm(formName){
         this.$refs[formName].validate((valid) => {
           if (valid) {
+            this.ruleForm.accesstoken = 856825;
             userLogin(this.ruleForm).then(res => {
-              //alert("返回"+JSON.stringify(res));
-              this.$router.push({ name: 'homeMain', params: {name: res}});
+              alert("返回"+JSON.stringify(res));
+              if(res.code == 200){
+                this.$router.push({ name: 'homeMain', params: {name: res}});
+              }else {
+                alert(res.msg);
+              }
             })
           } else {
             console.log('error submit!!');
