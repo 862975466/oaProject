@@ -53,7 +53,7 @@
         Axios.get('api/login',param).then((response)=> {
           console.log("response=="+JSON.stringify(response));
           if(response.data.code == 200){
-            this.$store.state.accesstoken = response.data.accesstoken;
+            this.$store.commit('delAccesstoken',response.data);
             this.$router.push({name: 'homeMain'});
           }
         });

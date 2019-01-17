@@ -18,5 +18,12 @@ new Vue({
   router,
   store,
   components: { App },
+  //保存用户登录信息
+  created(){
+    if(localStorage.getItem('loginUserData')==null){
+      localStorage.setItem('loginUserData','');
+    }
+    this.$store.state.loginUserData = localStorage.getItem('loginUserData');
+  },
   template: '<App/>'
 })

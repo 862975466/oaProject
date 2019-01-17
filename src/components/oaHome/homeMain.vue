@@ -2,12 +2,7 @@
   <div class="home-main1">
     <el-container style="width:100%;height: 100%; position: absolute;">
       <el-header>Header</el-header>
-      <el-container>
-        <el-aside width="200px">
-          Left
-        </el-aside>
-        <el-main>Main</el-main>
-      </el-container>
+      <el-main>{{this.$store.state.loginUserData}}</el-main>
     </el-container>
   </div>
 </template>
@@ -22,15 +17,9 @@
 
       }
     },
+    mounted(){
+    },
     methods:{
-      loginFun(){
-        // apiAddress({
-        //   useName: 0,
-        //   passWord: 1
-        // }).then(res => {
-        //   alert("返回"+JSON.stringify(res));
-        // })
-      }
     }
 
   }
