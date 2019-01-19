@@ -4,35 +4,38 @@ import login from '@/components/login/login'
 import indexMain from '@/components/indexMain'
 import homeMain from '@/components/oaHome/homeMain'
 import dataCorePage from '@/components/oaDataCore/dataCorePage'
-import oaWorkArea from '@/components/oaWorkArea/workAreaPage'
+import workAreaPage from '@/components/oaWorkArea/workAreaPage'
 Vue.use(Router);
 
 export default new Router({
   mode:'history',
   routes: [
     {
-      path: '/',
+      path: '/login',
       name: 'login',
+      component:login
     },
     {
-      path: '/indexMain',
+      path: '/',
       name: 'indexMain',
-      component: indexMain
+      component: indexMain,
+      children:[
+        {
+          path: '/',
+          name: 'homeMain',
+          component:homeMain
+        },
+        {
+          path: 'dataCorePage',
+          name: 'dataCorePage',
+          component:dataCorePage
+        },
+        {
+          path: 'workAreaPage',
+          name: 'workAreaPage',
+          component:workAreaPage
+        }
+      ]
     },
-    {
-      path: '/homeMain',
-      name: 'homeMain',
-      component:homeMain
-    },
-    {
-      path: '/dataCorePage',
-      name: 'dataCorePage',
-      component:dataCorePage
-    },
-    {
-      path: '/oaWorkArea',
-      name: 'oaWorkArea',
-      component:oaWorkArea
-    }
   ]
 })

@@ -4,10 +4,10 @@
       <el-header>
         <div style="padding: 5px 0px;float: left"><img src="../assets/img/logoing.png" style="height: 50px;"></div>
         <ul class="navUl">
-          <router-link tag="li" v-for="list in navUlDataArr" :key="list.id" :to="list.path">{{list.name}}</router-link>
+          <router-link tag="li" v-for="list in navUlDataArr" :key="list.id" :to="{path:list.path}">{{list.name}}</router-link>
         </ul>
       </el-header>
-      <el-main>{{this.$store.state.loginUserData}}</el-main>
+      <el-main><router-view></router-view></el-main>
     </el-container>
   </div>
 </template>
@@ -20,15 +20,15 @@
         navUlDataArr:[
           {
             name:"首页",
-            path:"/homeMain",
+            path:"/",
           },
           {
             name:"数据中心",
-            path:"/dataCore",
+            path:"/dataCorePage",
           },
           {
             name:"工作区",
-            path:"/workArea",
+            path:"/workAreaPage",
           }
 
         ]
@@ -39,9 +39,10 @@
 
 <style scoped>
   .el-header {
+    height: 60px;
+    line-height: 60px;
     background-color: #38b48b;
     color: #333;
-    line-height: 60px;
   }
   .navUl{
     margin-left: 15%;

@@ -1,5 +1,7 @@
 <template>
-
+<div class="work-area-page">
+  work-area-page
+</div>
 </template>
 
 <script>
