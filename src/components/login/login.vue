@@ -25,6 +25,9 @@
   import { userLogin } from '@/request/api'; // 导入我们的api接口
   export default {
     name: "login",
+    mounted(){
+      //alert(localStorage.getItem('loginUserData'));
+    },
     data(){
       return{
         ruleForm:{
@@ -48,13 +51,12 @@
           username:this.ruleForm.username,
           password:this.ruleForm.password
         };
-        param.accesstoken = "AdminTest"+Date.parse(new Date());
         console.log("param=="+JSON.stringify(param));
         Axios.get('api/login',param).then((response)=> {
           console.log("response=="+JSON.stringify(response));
           if(response.data.code == 200){
             this.$store.commit('delAccesstoken',response.data);
-            this.$router.push({name: 'indexMain'});
+            this.$router.push({path: '/'});
           }
         });
       }

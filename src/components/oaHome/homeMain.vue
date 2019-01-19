@@ -1,6 +1,7 @@
 <template>
-  <div class="home-main1">
-    {{this.$store.state.loginUserData}}
+  <div class="home-main">
+    home-mainhome-main
+    <!--{{this.$store.state.loginUserData}}-->
   </div>
 </template>
 

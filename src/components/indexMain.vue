@@ -2,10 +2,21 @@
   <div class="index-main">
     <el-container style="width:100%;height: 100%; position: absolute;">
       <el-header>
-        <div style="padding: 5px 0px;float: left"><img src="../assets/img/logoing.png" style="height: 50px;"></div>
+        <div style="padding: 7px 0px;float: left"><img src="../assets/img/logoing.png" style="height: 46px;"></div>
         <ul class="navUl">
-          <router-link tag="li" v-for="list in navUlDataArr" :key="list.id" :to="{path:list.path}">{{list.name}}</router-link>
+          <router-link tag="li" v-for="list in navUlDataArr" :key="list.id" :to="list.path">{{list.name}}</router-link>
         </ul>
+        <div style="float: right">
+          <span class="userNameIcon">{{userName|userNameIcon}}</span>
+          <el-dropdown>
+            <span style="color: #fff;cursor: pointer">{{userName}}</span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>个人资料</el-dropdown-item>
+              <el-dropdown-item>安全设置</el-dropdown-item>
+              <el-dropdown-item @click.native="cancelProiect">退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
       </el-header>
       <el-main><router-view></router-view></el-main>
     </el-container>
@@ -15,6 +26,16 @@
 <script>
   export default {
     name: "index-main",
+    filters:{
+      userNameIcon(userName){
+        if(userName.length > 2){
+          userName = userName.substring((userName.length-2),(userName.length))
+        }
+        return userName;
+      }
+    },
+    mounted(){
+    },
     data(){
       return{
         navUlDataArr:[
@@ -34,6 +55,21 @@
         ]
       }
     },
+    computed:{
+      userName(){
+        let loginUserData = this.$store.state.loginUserData;
+        loginUserData = JSON.parse(loginUserData);
+        let userName = '';
+        userName = JSON.parse(JSON.stringify(loginUserData.userName));
+        return userName;
+      }
+    },
+    methods:{
+      cancelProiect(){
+        this.$store.commit('delAccesstoken','',null);
+        this.$router.push({path: 'login'});
+      }
+    }
   }
 </script>
 
@@ -50,13 +86,26 @@
   }
   .navUl li{
     width: 120px;
-    height: 55px;
-    line-height: 55px;
+    height: 60px;
+    line-height: 60px;
     text-align: center;
     color: #fff;
     font-size: 18px;
     cursor: pointer;
     float: left;
+    border-bottom: solid 5px #38b48b;
+  }
+  .userNameIcon{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+    margin-top: 10px;
+    margin-right: 5px;
+    color: #38b48b;
+    border-radius: 50%;
+    background-color: #fff;
   }
   .el-main {
     background-color: #E9EEF3;

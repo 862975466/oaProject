@@ -5,3 +5,8 @@
   list-style: none;
   box-sizing: border-box;
 }
+.el-header .navUl li.router-link-exact-active{
+  color: #203744;
+  background: rgba(255,255,255,0.5);
+  border-bottom-color: #00a381;
+}

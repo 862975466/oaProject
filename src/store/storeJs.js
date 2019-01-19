@@ -8,7 +8,7 @@ const state = {
 //修改数据。是方法
 const mutations = {
   delAccesstoken(state,msg){
-    state.loginUserData = msg;
+    state.loginUserData = JSON.stringify(msg);
     localStorage.setItem('loginUserData',JSON.stringify(msg));
   }
 };
