@@ -1,5 +1,6 @@
 <template>
   <div class="home-main1">
+    {{this.$store.state.loginUserData}}
   </div>
 </template>
 
