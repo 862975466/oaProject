@@ -15,13 +15,35 @@ function loginByUsername(){
 Mock.mock(/login/, loginByUsername);
 //公告
 Mock.mock(/getNoticelist/,{
-  "list|8":[
+  "list|7":[
     {
       'title':'@ctitle(15,45)',
-      'id':'@string("number", 5)'
+      'id':'@string("number", 5)',
+      'ctime':Mock.mock('@date'),
     }
   ]
 });
+//待办工作
+Mock.mock(/getStayWorklist/,{
+  "list|7":[
+    {
+      'title':'@ctitle(15,45)',
+      'id':'@string("number", 5)',
+      'ctime':Mock.mock('@date'),
+    }
+  ]
+});
+//在办工作
+Mock.mock(/getNowWorklist/,{
+  "list|7":[
+    {
+      'title':'@ctitle(15,45)',
+      'id':'@string("number", 5)',
+      'ctime':Mock.mock('@date'),
+    }
+  ]
+});
+
 Mock.mock(/getChanpinlist/,{
   "list|8":[
     {
