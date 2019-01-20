@@ -7,7 +7,13 @@
        </div>
       </el-col>
       <el-col :span="12"><div class="mian-wrap"></div></el-col>
-      <el-col :span="6"><div class="mian-wrap"></div></el-col>
+      <el-col :span="6">
+        <div class="mian-wrap">
+          <el-date-picker
+            type="date">
+          </el-date-picker>
+        </div>
+      </el-col>
     </el-row>
     <el-row :gutter="20" style="margin-top: 20px">
       <el-col :span="8">
@@ -22,6 +28,9 @@
       </el-col>
       <el-col :span="8">
         <div class="mian-wrap">
+          <div style="width:50%;float: left;">
+            <chart-page></chart-page>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -30,6 +39,7 @@
 
 <script>
   import NewsAssembly from '../assemblyChildren/NewsAssembly'
+  import chartPage from '../chartAssembly/chartPage'
   import { getNoticelist } from '@/request/api';// 导入我们的api接口
   export default {
     name: "home-main",
@@ -49,7 +59,8 @@
       this.getStayWorklistFun();
     },
     components:{
-      NewsAssembly
+      NewsAssembly,
+      chartPage
     },
     methods:{
       //公告
