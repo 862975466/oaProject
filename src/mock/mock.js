@@ -11,19 +11,17 @@ function loginByUsername(){
   loginObjK.userName = Mock.mock('@cname');
   return loginObjK;
 }
+//登录
 Mock.mock(/login/, loginByUsername);
-Mock.mock(/address_edit_before9/,{
-  'list':[
+//公告
+Mock.mock(/getNoticelist/,{
+  "list|8":[
     {
-      "object|1-4": {
-        "110000": "北京市",
-        "120000": "天津市",
-        "130000": "河北省",
-        "140000": "山西省"
-      }
+      'title':'@ctitle(15,45)',
+      'id':'@string("number", 5)'
     }
   ]
-})
+});
 Mock.mock(/getChanpinlist/,{
   "list|8":[
     {

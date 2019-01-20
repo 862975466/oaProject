@@ -23,7 +23,9 @@ new Vue({
     if(localStorage.getItem('loginUserData')==null){
       localStorage.setItem('loginUserData','');
     }
-    this.$store.state.loginUserData = localStorage.getItem('loginUserData');
+    let loginUserData = localStorage.getItem('loginUserData');
+    loginUserData = JSON.parse(loginUserData);
+    this.$store.commit('delAccesstoken',loginUserData);
   },
   template: '<App/>'
 })

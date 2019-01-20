@@ -7,9 +7,11 @@
           <router-link tag="li" v-for="list in navUlDataArr" :key="list.id" :to="list.path">{{list.name}}</router-link>
         </ul>
         <div style="float: right">
-          <span class="userNameIcon">{{userName|userNameIcon}}</span>
           <el-dropdown>
-            <span style="color: #fff;cursor: pointer">{{userName}}</span>
+            <p>
+              <span class="userNameIcon">{{userName|userNameIcon}}</span>
+              <span style="color: #fff;cursor: pointer">{{userName}}</span>
+            </p>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>个人资料</el-dropdown-item>
               <el-dropdown-item>安全设置</el-dropdown-item>
@@ -57,10 +59,12 @@
     },
     computed:{
       userName(){
-        let loginUserData = this.$store.state.loginUserData;
-        loginUserData = JSON.parse(loginUserData);
         let userName = '';
-        userName = JSON.parse(JSON.stringify(loginUserData.userName));
+        if(this.$store.state.accesstoken!=""){
+          let loginUserData = this.$store.state.loginUserData;
+          loginUserData = JSON.parse(loginUserData);
+          userName = JSON.parse(JSON.stringify(loginUserData.userName));
+        }
         return userName;
       }
     },
