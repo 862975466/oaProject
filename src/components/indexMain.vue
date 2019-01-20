@@ -20,7 +20,11 @@
           </el-dropdown>
         </div>
       </el-header>
-      <el-main><router-view></router-view></el-main>
+      <el-main>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </el-main>
     </el-container>
   </div>
 </template>

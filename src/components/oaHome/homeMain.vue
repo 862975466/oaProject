@@ -97,9 +97,21 @@
       //返回
       newsAssemblyChildFun(param){
         if(param.isMode){
-          alert('更多');
+          if(param.typeEmit==1){
+            alert('公告更多');
+          }else if(param.typeEmit==2){
+            alert('在办工作');
+          }else if(param.typeEmit==3){
+            alert('待办工作');
+          }
         }else {
-          alert('列表id:'+param.id);
+          if(param.typeEmit==1){
+            alert('公告列表id:'+param.id);
+          }else if(param.typeEmit==2){
+            alert('在办列表id:'+param.id);
+          }else if(param.typeEmit==3){
+            alert('待办列表id:'+param.id);
+          }
         }
         console.log("param=="+JSON.stringify(param));
       }
