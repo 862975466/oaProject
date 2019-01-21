@@ -12,16 +12,16 @@
 <script>
   import $ from 'jquery'
   import Raphael from 'raphael/raphael'
-  global.Raphael = Raphael
+  global.Raphael = Raphael;
   import { DonutChart } from 'vue-morris'
   export default {
     name: "chart-page",
     data(){
       return{
         donutData: [
-          { label: 'Red', value: 300 },
-          { label: 'Blue', value: 50 },
-          { label: 'Yellow', value: 100 }
+          { label: '公告', value: 80 },
+          { label: '在办工作', value: 50 },
+          { label: '待办工作', value: 5 }
         ],
       }
     },

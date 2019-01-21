@@ -28,8 +28,17 @@
       </el-col>
       <el-col :span="8">
         <div class="mian-wrap">
-          <div style="width:50%;float: left;">
+          <div class="new-title-wrap">
+            <span class="new-title">事务统计</span>
+            <span class="new-mode">更多</span>
+          </div>
+          <div style="width:250px;margin-top:-45px;margin-left:65px;overflow:hidden;float: left;">
             <chart-page></chart-page>
+          </div>
+          <div class="chart-text">
+            <p>公告</p>
+            <p>在办工作</p>
+            <p>待办工作</p>
           </div>
         </div>
       </el-col>
@@ -137,5 +146,60 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 8px 0 #ccc;
+  }
+  .new-title-wrap {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    padding: 0px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #EEEEEE;
+    position: relative;
+  }
+  .new-title {
+    color: #606F94;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .new-mode {
+    width: 50px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #38b48b;
+    border-radius: 17px;
+    border: 1px solid #38b48b;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+  .chart-text{
+    margin-top: 55px;
+    float: left;
+  }
+  .chart-text p {
+    margin-left: 15px;
+    font-size: 16px;
+    line-height: 30px;
+  }
+  .chart-text p:nth-child(1){
+    color: #FF6384;
+  }
+  .chart-text p:nth-child(2){
+    color: #36A2EB;
+  }
+  .chart-text p:nth-child(3){
+    color: #FFCE56;
+  }
+  .chart-text p:before{
+    content: '';
+    width: 8px;
+    height: 8px;
+    margin-top: 12px;
+    margin-right: 10px;
+    float: left;
+    color: currentColor;
+    background-color: currentColor;
   }
 </style>

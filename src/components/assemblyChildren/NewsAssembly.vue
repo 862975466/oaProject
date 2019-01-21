@@ -94,6 +94,9 @@ li {
   white-space: nowrap;
   overflow: hidden;
 }
+.new-main-wrap li:hover{
+  color: #38b48b;
+}
 .date-time {
   color: #999999;
   position: absolute;
