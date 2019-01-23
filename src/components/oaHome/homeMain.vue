@@ -33,12 +33,10 @@
             <span class="new-mode">更多</span>
           </div>
           <div style="width:250px;margin-top:-45px;margin-left:65px;overflow:hidden;float: left;">
-            <chart-page></chart-page>
+            <chart-page :chartPageObjBoChild="chartPageObjBo"></chart-page>
           </div>
           <div class="chart-text">
-            <p>公告</p>
-            <p>在办工作</p>
-            <p>待办工作</p>
+            <p v-for="imet in chartPageObjBo.donutData">{{imet.label}}</p>
           </div>
         </div>
       </el-col>
@@ -59,7 +57,16 @@
         //在办
         nowWorklList:{},
         //待办
-        stayWorkList:{}
+        stayWorkList:{},
+        //图表数据
+        chartPageObjBo:{
+          donutData: [
+            { label: '公告', value: 80 },
+            { label: '在办工作', value: 50 },
+            { label: '待办工作', value: 5 }
+          ],
+          colors:["#FF6384", "#36A2EB", "#FFCE56" ],
+        }
       }
     },
     mounted(){

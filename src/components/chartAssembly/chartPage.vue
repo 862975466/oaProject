@@ -2,8 +2,8 @@
   <div class="chart-page">
     <donut-chart
       id="donut"
-      :data="donutData"
-      colors='[ "#FF6384", "#36A2EB", "#FFCE56" ]'
+      :data="chartPageObjBoChild.donutData"
+      :colors="chartPageObjBoChild.colors"
       resize="true">
     </donut-chart>
   </div>
@@ -16,13 +16,14 @@
   import { DonutChart } from 'vue-morris'
   export default {
     name: "chart-page",
+    props:{
+      chartPageObjBoChild:{
+        type:Object,
+        default:{}
+      }
+    },
     data(){
       return{
-        donutData: [
-          { label: '公告', value: 80 },
-          { label: '在办工作', value: 50 },
-          { label: '待办工作', value: 5 }
-        ],
       }
     },
     components:{
