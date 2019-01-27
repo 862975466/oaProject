@@ -6,12 +6,22 @@
          <news-assembly :propsDataObj="noticeList" @newsAssemblyChild="newsAssemblyChildFun"></news-assembly>
        </div>
       </el-col>
-      <el-col :span="12"><div class="mian-wrap"></div></el-col>
+      <el-col :span="12">
+        <div class="mian-wrap">
+          <el-row class="user-quick">
+            <el-col :span="8" v-for="imet in userQuickData" @click="this.$router.push({path:imet.path})">
+              <p class="icon-class"><i class="iconfont" :class="imet.icon"></i></p>
+              <div class="text">
+                <p>{{imet.title}}</p>
+                <p>{{imet.titleEg}}</p>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-col>
       <el-col :span="6">
         <div class="mian-wrap">
-          <el-date-picker
-            type="date">
-          </el-date-picker>
+          <calendar-affair></calendar-affair>
         </div>
       </el-col>
     </el-row>
@@ -27,7 +37,7 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <div class="mian-wrap">
+        <div class="mian-wrap" style="overflow: hidden">
           <div class="new-title-wrap">
             <span class="new-title">事务统计</span>
             <span class="new-mode">更多</span>
@@ -46,6 +56,7 @@
 
 <script>
   import NewsAssembly from '../assemblyChildren/NewsAssembly'
+  import CalendarAffair from '../assemblyChildren/CalendarAffair'
   import chartPage from '../chartAssembly/chartPage'
   import { getNoticelist } from '@/request/api';// 导入我们的api接口
   export default {
@@ -66,7 +77,27 @@
             { label: '待办工作', value: 5 }
           ],
           colors:["#FF6384", "#36A2EB", "#FFCE56" ],
-        }
+        },
+        userQuickData:[
+          {
+            path:'/dataCorePage',
+            icon:'icon-gonggao',
+            title:'发起公告',
+            titleEg:'INITIATION NOTICE'
+          },
+          {
+            path:'/dataCorePage',
+            icon:'icon-shengpi',
+            title:'发起审批',
+            titleEg:'INITIATION PROCESS'
+          },
+          {
+            path:'/dataCorePage',
+            icon:'icon-gerenzhongxin',
+            title:'个人中心',
+            titleEg:'PERSONAL CENTER'
+          }
+        ]
       }
     },
     mounted(){
@@ -76,7 +107,8 @@
     },
     components:{
       NewsAssembly,
-      chartPage
+      chartPage,
+      CalendarAffair
     },
     methods:{
       //公告
@@ -153,6 +185,35 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 8px 0 #ccc;
+  }
+  .user-quick{
+    padding-top: 5%;
+    cursor: pointer;
+    text-align: center;
+  }
+  .user-quick .icon-class{
+    width: 155px;
+    height: 155px;
+    line-height: 155px;
+    display:inline-block;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #e9eef3;
+  }
+  .user-quick .icon-class i{
+    font-size: 60px;
+    color: #38b48b;
+  }
+  .user-quick .text{
+    margin-top: 5px;
+  }
+  .user-quick .text p:first-child{
+    color: #474747;
+    font-size: 27px;
+  }
+  .user-quick .text p:last-child{
+    color: #979797;
+    font-size: 14px;
   }
   .new-title-wrap {
     width: 100%;
