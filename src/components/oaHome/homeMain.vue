@@ -9,7 +9,7 @@
       <el-col :span="12">
         <div class="mian-wrap">
           <el-row class="user-quick">
-            <el-col :span="8" v-for="imet in userQuickData" @click="this.$router.push({path:imet.path})">
+            <el-col :span="8" v-for="imet in userQuickData" @click.native="$router.push({path:imet.path})">
               <p class="icon-class"><i class="iconfont" :class="imet.icon"></i></p>
               <div class="text">
                 <p>{{imet.title}}</p>
