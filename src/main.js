@@ -10,7 +10,6 @@ import store from './store/storeJs'
 // 接口封装
 import httpJs from './request/http'
 // 随机数据生产
-import mockJs from '@/mock/mock'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
