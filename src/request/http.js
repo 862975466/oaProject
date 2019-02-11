@@ -7,7 +7,6 @@ import store from '../store/storeJs'
 import router from "../router";
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {
-  //axios.defaults.baseURL = 'http://edu.topeti.com';
   axios.defaults.baseURL = '/api';
 } else if (process.env.NODE_ENV == 'debug') {
   axios.defaults.baseURL = '';
