@@ -3,15 +3,16 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import './assets/font_icon/iconfont.css'
-import 'element-ui/lib/theme-chalk/index.css';
+import '../element-variables.scss'
+import '../theme/index.css'
 import App from './App'
 import router from './router'
 import store from './store/storeJs'
 // 接口封装
 import httpJs from './request/http'
 // 随机数据生产
-import mockJs from '@/mock/mock'
-Vue.config.productionTip = false
+import mockJs from '@/mock/mock';
+Vue.config.productionTip = false;
 Vue.use(ElementUI);
 new Vue({
   el: '#app',
